@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Order as OrderService } from '../../services/order'
 
 @Component({
   selector: 'app-salad',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './salad.html',
   styleUrl: './salad.scss',
 })
-export class Salad {}
+export class Salad {
+  protected orderService = inject(OrderService)
+
+}

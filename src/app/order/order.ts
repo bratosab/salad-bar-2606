@@ -1,15 +1,17 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Order as OrderService } from '../services/order';
 import { Router } from '@angular/router';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatFormField, MatLabel, MatError, MatPrefix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+
 @Component({
   selector: 'app-order',
   templateUrl: './order.html',
   styleUrl: './order.scss',
-  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatError, MatButton],
+  imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatError, MatButton, MatIcon, MatPrefix],
 })
 export class Order {
   private formBuilder = inject(FormBuilder);

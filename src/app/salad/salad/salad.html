@@ -1,19 +1,46 @@
-<p>Welcome {{ orderService.name() }}, please create your salad :</p>
+<div class="salad-page">
+  <header class="salad-header">
+    <div class="header-text">
+      <h1>Build Your Salad</h1>
+      <p>Hey <strong>{{ orderService.name() }}</strong>, pick your toppings!</p>
+    </div>
+    <div class="price-badge">
+      <span class="price-label">Total</span>
+      <span class="price-value">{{ toppingsService.totalPrice() }} €</span>
+    </div>
+  </header>
 
-<div class="topping-lists">
-  <app-toppings
-    [toppings]="toppings()"
-    buttonLabel="+1"
-    (chooseTopping)="toppingsService.chooseTopping($event)"
-  ></app-toppings>
+  <div class="panels">
+    <section class="panel available-panel">
+      <div class="panel-title">
+        <span class="panel-icon">🌿</span>
+        Available Toppings
+      </div>
+      <app-toppings
+        [toppings]="toppings()"
+        buttonLabel="Add"
+        (chooseTopping)="toppingsService.chooseTopping($event)"
+      ></app-toppings>
+    </section>
 
-  <div>
-    <p>Your toppings ({{ toppingsService.totalPrice() }} €)
-    </p>
-    <app-toppings
-      [toppings]="toppingsService.chosenToppings()"
-      buttonLabel="-1"
-      (chooseTopping)="toppingsService.removeTopping($event.id)"
-    ></app-toppings>
+    <section class="panel chosen-panel">
+      <div class="panel-title">
+        <span class="panel-icon">🥣</span>
+        Your Bowl ({{ toppingsService.chosenToppings().length }})
+      </div>
+      @if (toppingsService.chosenToppings().length === 0) {
+        <div class="empty-bowl">
+          <span>🍽️</span>
+          <p>Your bowl is empty — add some toppings!</p>
+        </div>
+      } @else {
+        <app-toppings
+          [toppings]="toppingsService.chosenToppings()"
+          buttonLabel="Remove"
+          [compact]="true"
+          (chooseTopping)="toppingsService.removeTopping($event.id)"
+        ></app-toppings>
+      }
+    </section>
   </div>
 </div>

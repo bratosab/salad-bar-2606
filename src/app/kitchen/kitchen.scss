@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.kitchen-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(160deg, #fff8e1, #fffde7);
+  text-align: center;
+  padding: 32px;
+
+  .kitchen-icon {
+    font-size: 5rem;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #e65100;
+  }
+
+  p {
+    margin: 0;
+    color: #795548;
+    font-size: 1rem;
+    font-weight: 600;
+    max-width: 320px;
+  }
+
+  .coming-soon {
+    margin-top: 8px;
+    padding: 6px 20px;
+    background: #fff3e0;
+    border: 2px solid #ffcc80;
+    border-radius: 20px;
+    color: #ef6c00;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}

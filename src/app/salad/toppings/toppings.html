@@ -1,8 +1,13 @@
-<ul>
+<div class="toppings-grid" [class.compact]="compact()">
   @for (topping of toppings(); track topping.id) {
-    <li>
-      {{ topping.name }} ({{ topping.price }}€)
-      <button matButton (click)="chooseTopping.emit(topping)">{{ buttonLabel() }}</button>
-    </li>
+    <div class="topping-card">
+      <div class="topping-info">
+        <span class="topping-name">{{ topping.name }}</span>
+        <span class="topping-price">{{ topping.price }} €</span>
+      </div>
+      <button matButton (click)="chooseTopping.emit(topping)" class="topping-btn">
+        {{ buttonLabel() }}
+      </button>
+    </div>
   }
-</ul>
+</div>

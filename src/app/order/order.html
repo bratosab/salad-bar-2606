@@ -1,19 +1,34 @@
-<form [formGroup]="orderForm" (ngSubmit)="startOrder()" class="order-form">
-  <mat-form-field>
-    <mat-label>What is your name ?</mat-label>
-    <input matInput formControlName="name"  />
-    <mat-error>You shall not pass without a name !</mat-error>
-  </mat-form-field>
+<div class="order-page">
+  <div class="hero">
+    <div class="hero-icon">🥗</div>
+    <h1>Welcome to Salad Bar</h1>
+    <p>Fresh ingredients, endless combinations</p>
+  </div>
 
-  <mat-form-field>
-    <mat-label>What is your phone number ?</mat-label>
-    <input matInput formControlName="tel"  />
-    @if(orderForm.controls.tel.hasError('required')) {
-    <mat-error>No number, no SALAD !</mat-error>
-    } @else {
-    <mat-error>Is this a fake number ?</mat-error>
-    }
-  </mat-form-field>
+  <form [formGroup]="orderForm" (ngSubmit)="startOrder()" class="order-form">
+    <h2>Start your order</h2>
 
-  <button type="submit" matButton="outlined">Start order</button>
-</form>
+    <mat-form-field appearance="outline">
+      <mat-label>Your name</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput formControlName="name" placeholder="e.g. Alice" />
+      <mat-error>You shall not pass without a name!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone number</mat-label>
+      <mat-icon matPrefix>phone</mat-icon>
+      <input matInput formControlName="tel" placeholder="06XXXXXXXX" />
+      @if (orderForm.controls.tel.hasError('required')) {
+        <mat-error>No number, no SALAD!</mat-error>
+      } @else {
+        <mat-error>Is this a fake number?</mat-error>
+      }
+    </mat-form-field>
+
+    <button type="submit" matButton class="submit-btn">
+      Build My Salad
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </form>
+</div>

@@ -1,0 +1,76 @@
+.toppings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+
+  &.compact {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.topping-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  background: white;
+  border: 1.5px solid #e8f5e9;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+    border-color: #a5d6a7;
+  }
+
+  .compact & {
+    padding: 10px 12px;
+    border-color: #fff3e0;
+
+    &:hover {
+      border-color: #ffcc80;
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.12);
+    }
+  }
+}
+
+.topping-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.topping-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1b5e20;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .compact .topping-card & {
+    color: #e65100;
+  }
+}
+
+.topping-price {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #66bb6a;
+
+  .compact .topping-card & {
+    color: #ffa726;
+  }
+}
+
+.topping-btn {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.8rem;
+  min-width: 52px;
+}

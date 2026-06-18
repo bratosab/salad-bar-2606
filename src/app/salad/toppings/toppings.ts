@@ -1,4 +1,4 @@
-import { Component, Input, input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Topping } from '../../models/topping.model';
 import { MatButton } from '@angular/material/button';
 
@@ -9,9 +9,8 @@ import { MatButton } from '@angular/material/button';
   imports: [MatButton],
 })
 export class Toppings {
-  // @Input()
-  // public toppings: Toppings[] = []
   public toppings = input<Topping[]>([]);
   public buttonLabel = input<string>('');
+  public compact = input<boolean>(false);
   public chooseTopping = output<Topping>();
 }

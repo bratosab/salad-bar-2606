@@ -1,13 +1,94 @@
 :host {
-    display: flex;
-    justify-content: center;
+  display: block;
+}
+
+.order-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: linear-gradient(160deg, #f1f8e9 0%, #e8f5e9 50%, #fff8e1 100%);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .hero-icon {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    animation: float 3s ease-in-out infinite;
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1b5e20;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #558b2f;
+    font-weight: 600;
+  }
 }
 
 .order-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 380px;
+  padding: 36px 32px;
+  background: white;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 24px rgba(46, 125, 50, 0.12),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+  gap: 8px;
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2e7d32;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .submit-btn {
+    margin-top: 8px;
+    height: 48px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2e7d32, #43a047);
+    color: white;
+    border-radius: 12px;
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    padding: 16px;
-    border: 1px solid grey;
-    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(46, 125, 50, 0.35);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

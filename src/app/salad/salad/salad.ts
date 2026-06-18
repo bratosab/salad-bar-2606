@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, OnInit, signal } from '@angular/core';
 import { Order as OrderService } from '../../services/order';
 import { ToppingsService } from '../../services/toppings-service';
 import { Topping } from '../../models/topping.model';
@@ -21,5 +21,7 @@ export class Salad implements OnInit {
       this.toppings.set(toppings);
     });
     console.log('after subscribe');
+
+  
   }
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service, signal } from '@angular/core';
+import { computed, inject, Service, signal, effect } from '@angular/core';
 import { Topping } from '../models/topping.model';
 
 @Service()
@@ -15,6 +15,17 @@ export class ToppingsService {
   get chosenToppings() {
     return this.chosenToppingsList.asReadonly();
   }
+
+  public totalPrice = computed(() => {
+    let total = 0;
+    this.chosenToppingsList().forEach((t) => (total += t.price));
+    return total;
+  });
+
+
+public effect1 =  effect(() => {
+    console.log(`topping was upadated : ${this.chosenToppingsList().length}`)
+  });
 
   chooseTopping(topping: Topping) {
     this.chosenToppingsList.update((currentToppings) => [...currentToppings, topping]);

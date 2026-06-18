@@ -1,1 +1,8 @@
-<p>toppings works!</p>
+<ul>
+  @for (topping of toppings(); track topping.id) {
+    <li>
+      {{ topping.name }} ({{ topping.price }}€)
+      <button matButton (click)="chooseTopping.emit(topping)">{{ buttonLabel() }}</button>
+    </li>
+  }
+</ul>

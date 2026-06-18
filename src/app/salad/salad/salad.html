@@ -1,22 +1,14 @@
 <p>Welcome {{ orderService.name() }}, please create your salad :</p>
 
-<ul>
-  @for (topping of toppings(); track topping.id) {
-    <li>
-      {{ topping.name }} ({{ topping.price }}€)
-      <button matButton (click)="toppingsService.chooseTopping(topping)">+1</button>
-    </li>
-  }
-</ul>
-
+<app-toppings
+  [toppings]="toppings()"
+  buttonLabel="+1"
+  (chooseTopping)="toppingsService.chooseTopping($event)"
+></app-toppings>
 
 <p>Your toppings :</p>
-<ul>
-  @for (topping of toppingsService.chosenToppings(); track topping.id) {
-    <li>
-      {{ topping.name }} ({{ topping.price }}€)
-      <button matButton (click)="toppingsService.removeTopping(topping.id)">-1</button>
-
-    </li>
-  }
-</ul>
+<app-toppings
+  [toppings]="toppingsService.chosenToppings()"
+  buttonLabel="-1"
+  (chooseTopping)="toppingsService.removeTopping($event.id)"
+></app-toppings>

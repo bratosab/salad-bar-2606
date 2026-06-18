@@ -2,18 +2,19 @@ import { ChangeDetectionStrategy, Component, effect, inject, OnInit, signal } fr
 import { Order as OrderService } from '../../services/order';
 import { ToppingsService } from '../../services/toppings-service';
 import { Topping } from '../../models/topping.model';
+import { Toppings } from '../toppings/toppings';
 
 @Component({
   selector: 'app-salad',
-  standalone: false,
   templateUrl: './salad.html',
   styleUrl: './salad.scss',
+  imports: [Toppings],
 })
 export class Salad implements OnInit {
   protected orderService = inject(OrderService);
   protected toppingsService = inject(ToppingsService);
 
-  protected toppings = signal<Topping[]>([])
+  protected toppings = signal<Topping[]>([]);
 
   ngOnInit() {
     this.toppingsService.getToppings().subscribe((toppings) => {
@@ -21,7 +22,5 @@ export class Salad implements OnInit {
       this.toppings.set(toppings);
     });
     console.log('after subscribe');
-
-  
   }
 }

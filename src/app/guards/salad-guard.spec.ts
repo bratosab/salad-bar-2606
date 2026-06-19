@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { CanActivateFn } from '@angular/router';
 
-import { saladGuardGuard } from './salad-guard-guard';
+import { saladGuard } from './salad-guard';
 
-describe('saladGuardGuard', () => {
+describe('saladGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
-    TestBed.runInInjectionContext(() => saladGuardGuard(...guardParameters));
+    TestBed.runInInjectionContext(() => saladGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

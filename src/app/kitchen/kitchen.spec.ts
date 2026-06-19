@@ -8,7 +8,7 @@ describe('Kitchen', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Kitchen],
+      imports: [Kitchen],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Kitchen);

@@ -6,11 +6,9 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]), App
       ],
-      declarations: [
-        App
-      ],
+      
     }).compileComponents();
   });
 
@@ -24,6 +22,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, salad-bar');
+    expect(compiled.querySelector('mat-toolbar > span.brand')?.textContent).toContain('Salad Bar');
   });
 });

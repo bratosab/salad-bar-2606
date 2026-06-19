@@ -6,6 +6,8 @@ import { MatFormField, MatLabel, MatError, MatPrefix } from '@angular/material/f
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { SetName, SetTel } from '../store/app.actions';
 
 @Component({
   selector: 'app-order',
@@ -17,6 +19,7 @@ export class Order {
   private formBuilder = inject(FormBuilder);
   private orderService = inject(OrderService);
   private router = inject(Router);
+  private store = inject(Store)
 
   protected orderForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -25,8 +28,11 @@ export class Order {
 
   protected startOrder() {
     if (this.orderForm.valid) {
-      this.orderService.name.set(this.orderForm.controls.name.value ?? '');
-      this.orderService.tel.set(this.orderForm.controls.tel.value ?? '');
+      // this.orderService.name.set();
+      // this.orderService.tel.set(this.orderForm.controls.tel.value ?? '');
+
+      this.store.dispatch(SetName({name : this.orderForm.controls.name.value ?? ''}))
+      this.store.dispatch(SetTel({tel : this.orderForm.controls.tel.value ?? ''}))
 
       this.router.navigate(['salad']);
     }

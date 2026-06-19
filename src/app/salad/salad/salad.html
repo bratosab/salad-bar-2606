@@ -2,7 +2,7 @@
   <header class="salad-header">
     <div class="header-text">
       <h1>Build Your Salad</h1>
-      <p>Hey <strong>{{ orderService.name() }}</strong>, pick your toppings!</p>
+      <p>Hey <strong>{{ name() }}</strong>, pick your toppings!</p>
     </div>
     <div class="price-badge">
       <span class="price-label">Total</span>
@@ -19,26 +19,26 @@
       <app-toppings
         [toppings]="toppings()"
         buttonLabel="Add"
-        (chooseTopping)="toppingsService.chooseTopping($event)"
+        (chooseTopping)="ChooseTopping($event)"
       ></app-toppings>
     </section>
 
     <section class="panel chosen-panel">
       <div class="panel-title">
         <span class="panel-icon">🥣</span>
-        Your Bowl ({{ toppingsService.chosenToppings().length }})
+        Your Bowl ({{ chosenToppings().length }})
       </div>
-      @if (toppingsService.chosenToppings().length === 0) {
+      @if (chosenToppings().length === 0) {
         <div class="empty-bowl">
           <span>🍽️</span>
           <p>Your bowl is empty — add some toppings!</p>
         </div>
       } @else {
         <app-toppings
-          [toppings]="toppingsService.chosenToppings()"
+          [toppings]="chosenToppings()"
           buttonLabel="Remove"
           [compact]="true"
-          (chooseTopping)="toppingsService.removeTopping($event.id)"
+          (chooseTopping)="RemoveTopping($event)"
         ></app-toppings>
       }
     </section>
